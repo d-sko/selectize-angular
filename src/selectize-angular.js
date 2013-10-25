@@ -12,7 +12,6 @@ angular.module('selectize-angular')
       link: function postLink(scope, element, attrs, ngModel) {
         var settings = scope.$eval(attrs.selectize);
         settings.delimiter = ',';
-        var changeflag = false;
 
         var safeApply = function ($scope, fn) {
           var phase = $scope.$root.$$phase;
@@ -29,7 +28,6 @@ angular.module('selectize-angular')
 
         var onChange = function(value) {
           safeApply(scope, function() {
-            changeflag = true;
             scope.ngModel = value.split(',');
           });
         }
