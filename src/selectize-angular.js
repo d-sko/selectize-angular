@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('selectize-angular')
-  .directive('selectize', function ($timeout) {
+angular.module('selectize-angular', [])
+  .directive('selectize', function () {
     return {
       restrict: 'A',
       require: '?ngModel',
