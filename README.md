@@ -14,5 +14,5 @@ Currently it is only working on ``<input>``-Elements (= muliple selections).
 ### Example
 
 ```
-<input type="text" ng-model="myModel" selectize="{valueField: 'id', labelField: 'name', sortField: 'name', searchField: 'name', plugins: ['remove_button']}" seloptions="availablOptionsModel">
+<input type="text" ng-model="myModel" selectize="{valueField: 'id', labelField: 'name', sortField: 'name', searchField: 'name', plugins: ['remove_button']}" seloptions="availableOptionsModel">
 ```
