@@ -30,7 +30,7 @@ angular.module('selectize-angular', [])
           safeApply(scope, function() {
             scope.ngModel = value.split(',');
           });
-        }
+        };
 
         scope.$watch('seloptions', function() {
           safeApply(scope, function() {
