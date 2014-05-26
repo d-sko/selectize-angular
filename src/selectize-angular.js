@@ -13,6 +13,8 @@ angular.module('selectize-angular', [])
         var settings = scope.$eval(attrs.selectize);
         settings.delimiter = ',';
 
+        // author: Alex Vanston
+        // source: https://coderwall.com/p/ngisma
         var safeApply = function ($scope, fn) {
           var phase = $scope.$root.$$phase;
           if (phase == '$apply' || phase == '$digest') {
