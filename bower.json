@@ -2,7 +2,6 @@
   "name": "selectize-angular",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "~1.11.1",
-    "selectize": "~0.9.1"
+    "selectize": "~0.10.1"
   }
 }
