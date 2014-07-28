@@ -5,12 +5,17 @@ angular.module('selectize-angular', [])
     return {
       restrict: 'A',
       require: '?ngModel',
+      transclude: true,
       scope: {
-        seloptions: '=seloptions',
+        seloptions: '=',
         ngModel: '=',
+        render: '='
       },
       link: function postLink(scope, element, attrs, ngModel) {
         var settings = scope.$eval(attrs.selectize);
+        if (scope.render !== undefined && scope.render !== null) {
+          settings.render = scope.render;
+        }
         settings.delimiter = ',';
 
         // author: Alex Vanston
