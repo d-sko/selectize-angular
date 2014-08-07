@@ -44,7 +44,7 @@ angular.module('selectize-angular', [])
             selectizeobj.clearOptions();
             for (var i in scope.seloptions)
               selectizeobj.addOption(scope.seloptions[i]);
-            selectizeobj.refreshOptions();
+            selectizeobj.refreshOptions(false);
           });
         });
 
