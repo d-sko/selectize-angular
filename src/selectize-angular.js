@@ -9,12 +9,16 @@ angular.module('selectize-angular', [])
       scope: {
         seloptions: '=',
         ngModel: '=',
-        render: '='
+        render: '=',
+        create: '='
       },
       link: function postLink(scope, element, attrs, ngModel) {
         var settings = scope.$eval(attrs.selectize);
-        if (scope.render !== undefined && scope.render !== null) {
+        if (typeof scope.render !== 'undefined' && scope.render !== null) {
           settings.render = scope.render;
+        }
+        if (typeof scope.create !== 'undefined' && scope.create !== null) {
+          settings.create = scope.create;
         }
         settings.delimiter = ',';
 
