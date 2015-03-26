@@ -41,25 +41,29 @@ angular.module('selectize-angular', [])
           if (externalUpdate) {
             return;
           }
-          if (scope.selection === undefined || !scope.selection instanceof Array) {
-            scope.selection = [];
-          }
-          for (var i in scope.items) {
-            if (scope.items[i][selectizeObj.settings.valueField] === value) {
-              scope.selection.push(scope.items[i]);
-              delete scope.selection[scope.selection.length - 1].$order;
-              break;
+          safeApply(scope, function() {
+            if (scope.selection === undefined || !scope.selection instanceof Array) {
+              scope.selection = [];
             }
-          }
+            for (var i in scope.items) {
+              if (scope.items[i][selectizeObj.settings.valueField] === value) {
+                scope.selection.push(scope.items[i]);
+                delete scope.selection[scope.selection.length - 1].$order;
+                break;
+              }
+            }
+          });
         });
 
         selectizeObj.on('item_remove', function(value) {
-          for (var i in scope.selection) {
-            if (scope.selection[i][selectizeObj.settings.valueField] === value) {
-              scope.selection.splice(i,1);
-              break;
+          safeApply(scope, function() {
+            for (var i in scope.selection) {
+              if (scope.selection[i][selectizeObj.settings.valueField] === value) {
+                scope.selection.splice(i,1);
+                break;
+              }
             }
-          }
+          });
         });
 
         scope.$watch('items', function() {
@@ -71,15 +75,13 @@ angular.module('selectize-angular', [])
         });
 
         scope.$watch('selection', function() {
-          safeApply(scope, function() {
-            externalUpdate = true;
-            selectizeObj.clear();
-            for (var i in scope.selection) {
-              selectizeObj.addItem(scope.selection[i][selectizeObj.settings.valueField], true);
-            }
-            selectizeObj.refreshItems();
-            externalUpdate = false;
-          });
+          externalUpdate = true;
+          selectizeObj.clear();
+          for (var i in scope.selection) {
+            selectizeObj.addItem(scope.selection[i][selectizeObj.settings.valueField], true);
+          }
+          selectizeObj.refreshItems();
+          externalUpdate = false;
         });
       }
     };
