@@ -55,6 +55,16 @@ angular.module('selectize-angular', [])
           });
         });
 
+        var updateSelection = function() {
+          externalUpdate = true;
+          selectizeObj.clear();
+          for (var i in scope.selection) {
+            selectizeObj.addItem(scope.selection[i][selectizeObj.settings.valueField], true);
+          }
+          selectizeObj.refreshItems();
+          externalUpdate = false;
+        } ;
+
         selectizeObj.on('item_remove', function(value) {
           safeApply(scope, function() {
             for (var i in scope.selection) {
@@ -71,17 +81,12 @@ angular.module('selectize-angular', [])
             selectizeObj.clearOptions();
             selectizeObj.addOption(scope.items);
             selectizeObj.refreshOptions(false);
+            updateSelection();
           });
         });
 
         scope.$watch('selection', function() {
-          externalUpdate = true;
-          selectizeObj.clear();
-          for (var i in scope.selection) {
-            selectizeObj.addItem(scope.selection[i][selectizeObj.settings.valueField], true);
-          }
-          selectizeObj.refreshItems();
-          externalUpdate = false;
+          updateSelection();
         });
       }
     };
