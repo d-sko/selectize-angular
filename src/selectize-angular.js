@@ -87,7 +87,7 @@ angular.module('selectize-angular', [])
 
         scope.$watch('selection', function() {
           updateSelection();
-        });
+        }, true);
       }
     };
   });
