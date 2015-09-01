@@ -3,5 +3,13 @@
   "version": "0.0.4",
   "dependencies": {
     "selectize": "~0.12"
-  }
+  },
+  "main": "src/selectize-angular.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
